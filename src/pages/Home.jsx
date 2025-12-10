@@ -5,6 +5,7 @@ import {
   Badge,
   BadgeAlert,
   BadgeCheck,
+  Book,
   Bookmark,
   Download,
   EggFried,
@@ -17,11 +18,19 @@ import {
   TimerReset,
   Trophy,
   Verified,
+  Facebook,
+  Instagram,
+  Twitter,
+
+
 } from "lucide-react";
 import { useState } from "react";
 import { foodData } from "../components/data"; // <-- your data file
 import { BiStar } from "react-icons/bi";
 import { useEffect, useRef } from "react";
+import { TiSocialFacebook } from "react-icons/ti";
+import { FaFacebook } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 function Home() {
   const categories = [
@@ -124,33 +133,54 @@ function Home() {
       desc: "Donec feugiat, arcu non pulvinar posuere, risus libero cursus nibh, sed dictum nibh arcu non augue.",
       badge: "Street Food Fest",
       image: assets.chef1,
-      icon: <BadgeCheck className="w-7 h-5" color="#E07946"/>
+      icon: <BadgeCheck className="w-7 h-5" color="#E07946"/>,
+  
+      // ⭐ HOVER ICONS
+      icon1: <FaFacebookF size={18} />,
+      icon2: <FaInstagram size={18} />,
+      icon3: <FaTwitter size={18} />,
     },
+  
     {
       name: "Mila Santos",
       role: "Pastry Chef",
       desc: "Integer aliquet, urna et commodo gravida, libero lacus aliquam velit, vitae iaculis sem velit in purus.",
       badge: "Cocoa Summit",
       image: assets.chef6,
-      icon: <EggFried className="w-7 h-5" color="#E07946"/>
+      icon: <EggFried className="w-7 h-5" color="#E07946"/>,
+  
+      icon1: <Facebook size={18} />,
+      icon2: <Instagram size={18} />,
+      icon3: <Twitter size={18} />,
     },
+  
     {
       name: "Kai Thompson",
       role: "Grill Master",
       desc: "Pellentesque dapibus, nibh id pharetra interdum, risus est vehicula lectus, non iaculis velit elit ut felis.",
       badge: "Smoke-Off Winner",
       image: assets.chef8,
-      icon: <Flame className="w-7 h-5" color="#E07946"/>
+      icon: <Flame className="w-7 h-5" color="#E07946"/>,
+  
+      icon1: <Facebook size={18} />,
+      icon2: <Instagram size={18} />,
+      icon3: <Twitter size={18} />,
     },
+  
     {
       name: "Renee Collins",
       role: "Line Cook",
       desc: "Vestibulum congue, justo eget ultricies posuere, erat nunc viverra arcu, vitae cursus arcu nunc at erat.",
       badge: "Guest Favorite",
       image: assets.chef3,
-      icon: <Smile className="w-7 h-5" color="#E07946"/>
+      icon: <Smile className="w-7 h-5" color="#E07946"/>,
+  
+      icon1: <Facebook size={18} />,
+      icon2: <Instagram size={18} />,
+      icon3: <Twitter size={18} />,
     },
   ];
+  
 
   return (
     <div>
@@ -643,31 +673,62 @@ function Home() {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-7 gap-8">
-            {chefs.map((chef, index) => (
-              <div
-                key={index}
-                className=" rounded-3xl shadow-2xl overflow-hidden hover:overflow-hidden hover:scale-105 transform duration-300"
-              >
-                <img
-                  src={chef.image}
-                  className="h-56 w-full object-cover hover:scale-105 transform duration-300"
-                  alt={chef.name}
-                />
+  {chefs.map((chef, index) => (
+    <div
+      key={index}
+      className="relative group rounded-3xl shadow-2xl overflow-hidden hover:scale-105 transform duration-300"
+    >
+      {/* IMAGE AREA */}
+      <div className="relative">
+        <img
+          src={chef.image}
+          className="h-56 w-full object-cover transition duration-300 group-hover:scale-105"
+          alt={chef.name}
+        />
 
-                <div className="p-6">
-                  <h2 className="text-2xl font-semibold">{chef.name}</h2>
-                  <p className="text-gray-500 text-sm mb-3">{chef.role}</p>
-
-                  <p className="text-gray-600 text-sm mb-4">{chef.desc}</p>
-
-                  <div className="flex items-center gap-2 border border-amber-600 bg-orange-100 text-orange-600 px-3 py-1 rounded-full w-max text-sm">
-                    {chef.icon}
-                    {chef.badge}
-                  </div>
-                </div>
-              </div>
-            ))}
+        {/* ⭐ HOVER ICONS ⭐ */}
+        <div
+          className="
+            absolute bottom-3 right-3 
+            flex items-center gap-3
+            opacity-0 group-hover:opacity-100
+            translate-y-3 group-hover:translate-y-0
+            transition-all duration-300
+          "
+        >
+          {/* ICON 1 */}
+          <div className="p-2 bg-white rounded-full shadow hover:bg-amber-600 hover:text-white hover:scale-110 transition cursor-pointer">
+            {chef.icon1}
           </div>
+
+          {/* ICON 2 */}
+          <div className="p-2 bg-white rounded-full shadow hover:bg-amber-600 hover:text-white hover:scale-110 transition cursor-pointer">
+            {chef.icon2}
+          </div>
+
+          {/* ICON 3 */}
+          <div className="p-2 bg-white rounded-full shadow hover:bg-amber-600 hover:text-white hover:scale-110 transition cursor-pointer">
+            {chef.icon3}
+          </div>
+        </div>
+      </div>
+
+      {/* CONTENT */}
+      <div className="p-6">
+        <h2 className="text-2xl font-semibold">{chef.name}</h2>
+        <p className="text-gray-500 text-sm mb-3">{chef.role}</p>
+
+        <p className="text-gray-600 text-sm mb-4">{chef.desc}</p>
+
+        <div className="flex items-center gap-2 border border-amber-600 bg-orange-100 text-orange-600 px-3 py-1 rounded-full w-max text-sm">
+          {chef.icon}
+          {chef.badge}
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
         </div>
       </section>
     </div>
