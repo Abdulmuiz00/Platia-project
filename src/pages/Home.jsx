@@ -21,16 +21,23 @@ import {
   Facebook,
   Instagram,
   Twitter,
-
-
+  Clock,
+  LocateIcon,
+  Pointer,
+  Mail,
+  Phone,
+  Locate,
+  PointerIcon,
+  MapPin,
 } from "lucide-react";
 import { useState } from "react";
 import { foodData } from "../components/data"; // <-- your data file
 import { BiStar } from "react-icons/bi";
 import { useEffect, useRef } from "react";
 import { TiSocialFacebook } from "react-icons/ti";
-import { FaFacebook } from "react-icons/fa6";
+import { FaFacebook, FaPhone } from "react-icons/fa6";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
 
 function Home() {
   const categories = [
@@ -133,54 +140,53 @@ function Home() {
       desc: "Donec feugiat, arcu non pulvinar posuere, risus libero cursus nibh, sed dictum nibh arcu non augue.",
       badge: "Street Food Fest",
       image: assets.chef1,
-      icon: <BadgeCheck className="w-7 h-5" color="#E07946"/>,
-  
+      icon: <BadgeCheck className="w-7 h-5" color="#E07946" />,
+
       // ⭐ HOVER ICONS
       icon1: <FaFacebookF size={18} />,
       icon2: <FaInstagram size={18} />,
       icon3: <FaTwitter size={18} />,
     },
-  
+
     {
       name: "Mila Santos",
       role: "Pastry Chef",
       desc: "Integer aliquet, urna et commodo gravida, libero lacus aliquam velit, vitae iaculis sem velit in purus.",
       badge: "Cocoa Summit",
       image: assets.chef6,
-      icon: <EggFried className="w-7 h-5" color="#E07946"/>,
-  
+      icon: <EggFried className="w-7 h-5" color="#E07946" />,
+
       icon1: <Facebook size={18} />,
       icon2: <Instagram size={18} />,
       icon3: <Twitter size={18} />,
     },
-  
+
     {
       name: "Kai Thompson",
       role: "Grill Master",
       desc: "Pellentesque dapibus, nibh id pharetra interdum, risus est vehicula lectus, non iaculis velit elit ut felis.",
       badge: "Smoke-Off Winner",
       image: assets.chef8,
-      icon: <Flame className="w-7 h-5" color="#E07946"/>,
-  
+      icon: <Flame className="w-7 h-5" color="#E07946" />,
+
       icon1: <Facebook size={18} />,
       icon2: <Instagram size={18} />,
       icon3: <Twitter size={18} />,
     },
-  
+
     {
       name: "Renee Collins",
       role: "Line Cook",
       desc: "Vestibulum congue, justo eget ultricies posuere, erat nunc viverra arcu, vitae cursus arcu nunc at erat.",
       badge: "Guest Favorite",
       image: assets.chef3,
-      icon: <Smile className="w-7 h-5" color="#E07946"/>,
-  
+      icon: <Smile className="w-7 h-5" color="#E07946" />,
+
       icon1: <Facebook size={18} />,
       icon2: <Instagram size={18} />,
       icon3: <Twitter size={18} />,
     },
   ];
-  
 
   return (
     <div>
@@ -297,10 +303,7 @@ function Home() {
         </div>
       </section>
 
-      <section
-        id="about"
-        className="lg:h-[120vh] md:h-auto h-auto bg-[#F8EFEB] py-5 lg:px-20 md:px-5 px-2"
-      >
+      <section id="about" className="lg:h-[120vh] md:h-auto h-auto bg-[#F8EFEB] py-5 lg:px-20 md:px-6 px-2">
         <h1
           style={{ fontFamily: "Plus Jakarta" }}
           className="text-4xl font-bold text-center my-5"
@@ -376,7 +379,7 @@ function Home() {
         </div>
       </section>
 
-      <section id="menu" className="bg-[#dfbeb0] pt-14 pb-5 px-4 lg:px-20">
+      <section id="menu" className="bg-[#dfbeb0] pt-14 pb-5 px-4 md:px-6  lg:px-20">
         <h1
           style={{ fontFamily: "Plus Jakarta" }}
           className="text-4xl font-bold text-center mb-3"
@@ -413,7 +416,7 @@ function Home() {
           {displayedFood.map((item) => (
             <div
               key={`${item.category}-${item.id}`} // use category + id
-              className="bg-white shadow-lg h-[350px] rounded-2xl overflow-hidden relative hover:scale-103 hover:border-2 hover:border-amber-500 duration-200 cursor-pointer"
+              className="bg-white shadow-lg h-[350px] rounded-2xl overflow-hidden relative hover:scale-103 duration-200 cursor-pointer"
             >
               <img
                 src={item.img}
@@ -435,7 +438,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="bg-[#F8EFEB] py-14 px-4 lg:px-20">
+      <section className="bg-[#F8EFEB] py-14 px-4 md:px-6 lg:px-20">
         <h1
           style={{ fontFamily: "Plus Jakarta" }}
           className="text-4xl font-bold justify-center items-center gap-3 flex  mb-3 "
@@ -448,10 +451,10 @@ function Home() {
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 sm:grid-cols-2 mt-10 md:grid-cols-1 gap-8">
-          <div className="bg-white shadow-lg h-[400px] rounded-2xl overflow-hidden relative hover:scale-103 hover:border-2 hover:border-amber-500 duration-200 cursor-pointer">
+          <div className="bg-white shadow-lg h-[400px] rounded-2xl overflow-hidden relative hover:scale-103 duration-200 cursor-pointer">
             <img
               src={assets.main9}
-              className=" w-full h-50 object-cover mb-4"
+              className=" w-full h-50 object-cover mb-4 hover:scale-103 duration-200 translate"
             />
             <div className="flex flex-col py-5 px-5 lg:px-4 lg:py-2 gap-2">
               <h2 className="font-bold text-xl mb-1">Pan-Seared Duck Breast</h2>
@@ -482,10 +485,10 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="bg-white shadow-lg h-[400px] rounded-2xl overflow-hidden relative hover:scale-103 hover:border-2 hover:border-amber-500 duration-200 cursor-pointer">
+          <div className="bg-white shadow-lg h-[400px] rounded-2xl overflow-hidden relative hover:scale-103 duration-200 cursor-pointer">
             <img
               src={assets.main8}
-              className=" w-full h-50 object-cover mb-4"
+              className=" w-full h-50 object-cover mb-4 hover:scale-103 duration-200 translate"
             />
             <div className="flex flex-col py-5 px-5 lg:px-4 lg:py-2 gap-2">
               <h2 className="font-bold text-xl mb-1">
@@ -521,7 +524,7 @@ function Home() {
         </div>
       </section>
 
-      <section id="Testimonials" className="bg-[#dfbeb0] py-14 px-4 lg:px-20">
+      <section id="Testimonials" className="bg-[#dfbeb0] py-14 px-4 md:px-6  lg:px-20">
         {/* Title */}
         <div className="max-w-6xl mx-auto text-center px-5 mb-12">
           <h2 className="text-4xl font-bold text-gray-800 mb-3">
@@ -596,10 +599,7 @@ function Home() {
         </div>
       </section>
 
-      <section
-        id="chefs"
-        className="bg-[#F8EFEB] pt-10 px-4 lg:px-20 h-auto"
-      >
+      <section id="chefs" className="bg-[#F8EFEB] pt-10 px-4 md:px-6 lg:px-20 h-auto">
         <h1
           style={{ fontFamily: "Plus Jakarta" }}
           className="text-4xl font-bold text-center mb-3"
@@ -611,19 +611,26 @@ function Home() {
           consectetur velit
         </p>
         <div className="flex flex-col gap-4">
-          <div className="flex gap-4">
-            <div className="relative w-[40%]">
-              <img
-                src={assets.chef4}
-                alt=""
-                className="h-[100%]  rounded-3xl object-cover transform  duration-200 hover:scale-105"
-              />
-              <p className="absolute py-1 px-2 text-[15px] flex items-center top-10 border border-amber-600 bg-pink-200 rounded-2xl start-5">
-                <Star className="text-blue-500" fill="currentColor" color="" />{" "}
+          <div className="flex flex-col md:flex-col lg:flex-row  gap-4">
+            <div className="relative w-full md:w-full lg:w-[40%] h-[450px] rounded-3xl overflow-hidden group">
+              <div className="w-full h-full overflow-hidden">
+                <img
+                  src={assets.chef4}
+                  alt=""
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+
+              <p
+                className="absolute top-10 start-5 py-1 px-2 text-[15px] flex items-center gap-1
+                border border-amber-600 bg-pink-200 rounded-2xl z-10"
+              >
+                <Star className="text-blue-500" fill="currentColor" />
                 Michelin Mention
               </p>
             </div>
-            <div className="text flex flex-col w-[45%] gap-5 my-auto me-auto h-auto ">
+
+            <div className="text flex flex-col w-full md:w-full lg:w-[45%] gap-5 my-auto me-auto h-auto ">
               <p className="py-1 px-2 text-[15px] w-35 flex items-center  border border-amber-600 bg-pink-200 rounded-2xl start-5">
                 <Verified
                   className="text-blue-500"
@@ -673,62 +680,188 @@ function Home() {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-7 gap-8">
-  {chefs.map((chef, index) => (
-    <div
-      key={index}
-      className="relative group rounded-3xl shadow-2xl overflow-hidden hover:scale-105 transform duration-300"
-    >
-      {/* IMAGE AREA */}
-      <div className="relative">
-        <img
-          src={chef.image}
-          className="h-56 w-full object-cover transition duration-300 group-hover:scale-105"
-          alt={chef.name}
-        />
+            {chefs.map((chef, index) => (
+              <div
+                key={index}
+                className="relative group rounded-3xl shadow-2xl overflow-hidden hover:scale-105 transform duration-300"
+              >
+                {/* IMAGE AREA */}
+                <div className="relative">
+                  <img
+                    src={chef.image}
+                    className="h-56 w-full object-cover transition duration-300 group-hover:scale-105"
+                    alt={chef.name}
+                  />
 
-        {/* ⭐ HOVER ICONS ⭐ */}
-        <div
-          className="
+                  {/* ⭐ HOVER ICONS ⭐ */}
+                  <div
+                    className="
             absolute bottom-3 right-3 
             flex items-center gap-3
             opacity-0 group-hover:opacity-100
             translate-y-3 group-hover:translate-y-0
             transition-all duration-300
           "
-        >
-          {/* ICON 1 */}
-          <div className="p-2 bg-white rounded-full shadow hover:bg-amber-600 hover:text-white hover:scale-110 transition cursor-pointer">
-            {chef.icon1}
-          </div>
+                  >
+                    {/* ICON 1 */}
+                    <div className="p-2 bg-white rounded-full shadow hover:bg-amber-600 hover:text-white hover:scale-110 transition cursor-pointer">
+                      {chef.icon1}
+                    </div>
 
-          {/* ICON 2 */}
-          <div className="p-2 bg-white rounded-full shadow hover:bg-amber-600 hover:text-white hover:scale-110 transition cursor-pointer">
-            {chef.icon2}
-          </div>
+                    {/* ICON 2 */}
+                    <div className="p-2 bg-white rounded-full shadow hover:bg-amber-600 hover:text-white hover:scale-110 transition cursor-pointer">
+                      {chef.icon2}
+                    </div>
 
-          {/* ICON 3 */}
-          <div className="p-2 bg-white rounded-full shadow hover:bg-amber-600 hover:text-white hover:scale-110 transition cursor-pointer">
-            {chef.icon3}
+                    {/* ICON 3 */}
+                    <div className="p-2 bg-white rounded-full shadow hover:bg-amber-600 hover:text-white hover:scale-110 transition cursor-pointer">
+                      {chef.icon3}
+                    </div>
+                  </div>
+                </div>
+
+                {/* CONTENT */}
+                <div className="p-6">
+                  <h2 className="text-2xl font-semibold">{chef.name}</h2>
+                  <p className="text-gray-500 text-sm mb-3">{chef.role}</p>
+
+                  <p className="text-gray-600 text-sm mb-4">{chef.desc}</p>
+
+                  <div className="flex items-center gap-2 border border-amber-600 bg-orange-100 text-orange-600 px-3 py-1 rounded-full w-max text-sm">
+                    {chef.icon}
+                    {chef.badge}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* CONTENT */}
-      <div className="p-6">
-        <h2 className="text-2xl font-semibold">{chef.name}</h2>
-        <p className="text-gray-500 text-sm mb-3">{chef.role}</p>
+      <section id="reservation" className="bg-[#dfbeb0] py-14 px-4 md:px-6 lg:px-20">
+        <div className="rounded-2xl h-auto md:h-auto lg:h-[120vh] flex flex-col md:flex-col lg:flex-row gap-5 overflow-hidden">
+          <div className="bg-white w-full md:w-full lg:w-[40%] my-3 rounded-2xl p-3">
+            <h1
+              style={{ fontFamily: "Plus Jakarta" }}
+              className="text-4xl font-bold text-center my-5"
+            >
+              Make a Reservation
+            </h1>
 
-        <p className="text-gray-600 text-sm mb-4">{chef.desc}</p>
+            <p className="text-center text-amber-950 text-[15px] md:text-[18px] lg:text-[18px]">
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam quis nostrud exercitation.
+            </p>
 
-        <div className="flex items-center gap-2 border border-amber-600 bg-orange-100 text-orange-600 px-3 py-1 rounded-full w-max text-sm">
-          {chef.icon}
-          {chef.badge}
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
+            <form className="grid grid-cols-2 mt-5 gap-4">
+              <input
+                type="text"
+                placeholder="Fullname"
+                className="col-span-2 p-4 rounded-md bg-pink-100 outline-amber-600 border-0"
+              />
+              <input
+                type="email"
+                placeholder="Email Address"
+                className="col-span-2 p-4 rounded-md bg-pink-100 outline-amber-600 border-0"
+              />
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                className="col-span-2 p-4 rounded-md bg-pink-100 outline-amber-600 border-0"
+              />
 
+              <input
+                type="date"
+                className="p-4 rounded-md bg-pink-100 outline-amber-600 border-0"
+              />
+              <input
+                type="time"
+                className="p-4 rounded-md bg-pink-100 outline-amber-600 border-0"
+              />
+
+              <select className="p-4 rounded-md bg-pink-100 outline-amber-600 border-0">
+                <option value="">Guests</option>
+              </select>
+
+              <select className="p-4 rounded-md bg-pink-100 outline-amber-600 border-0">
+                <option value="">Occasion</option>
+              </select>
+
+              <textarea
+                placeholder="Special requests or dietary requirements"
+                className="col-span-2 p-4 rounded-md bg-pink-100 outline-amber-600 border-0"
+              />
+
+              <button
+                className="col-span-2 p-4 rounded-md text-white text-[18px] bg-amber-600 
+          hover:bg-[#d75919] transition-all duration-200 hover:-translate-y-1"
+              >
+                Reserve a Table
+              </button>
+            </form>
+          </div>
+
+          <div className="w-full md:w-full lg:w-[60%] flex flex-col items-start justify-center">
+            <div className="w-full h-50 md:h-[50vh] lg:h-[70vh] overflow-hidden rounded-2xl relative group">
+              <img
+                src={assets.showcase2}
+                alt="Reservation"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+
+              <div className="absolute inset-0 bg-black/50 transition-opacity duration-500 group-hover:bg-black/60 z-10"></div>
+
+              <div className="flex flex-col absolute top-16 md:top-78 lg:top-48 px-10 text-white z-20">
+                <h1 className="text-2xl font-bold">Experience Fine Dining</h1>
+                <p>
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1  md:grid-cols-2  lg:grid-cols-2 gap-3 md:gap-5 w-full mt-6">
+              <div className="bg-white rounded-2xl my-2 flex flex-col px-5 py-3 transition-all duration-400 hover:-translate-y-2 ">
+                <Clock
+                  className="py-1 px-2 rounded-3xl bg-amber-600 text-white"
+                  size={"40px"}
+                />
+                <h1 className="text-2xl font-bold my-2">Business Hours</h1>
+                <p>Tuesday - Thursday: 5:00 PM - 10:00</p>
+                <p>PM</p>
+                <p>Friday - Saturday: 5:00 PM - 11:00</p>
+                <p>PM</p>
+                <p>Sunday: 4:00 PM - 9:00 PM</p>
+              </div>
+              <div className="bg-white rounded-2xl my-2 flex flex-col px-5 py-3 transition-all duration-400 hover:-translate-y-2 ">
+                <MapPin
+                  className="py-1 px-2 rounded-3xl bg-amber-600 text-white"
+                  size={"40px"}
+                />
+                <h1 className="text-2xl font-bold my-2">Find Us</h1>
+                <p>4567 Elm Avenue, Floor 2</p>
+                <p>Chicago, IL 60614</p>
+              </div>
+              <div className="bg-white rounded-2xl my-2 flex flex-col px-5 py-3 transition-all duration-400 hover:-translate-y-2 ">
+                <Phone
+                  className="py-1 px-2 rounded-3xl bg-amber-600 text-white"
+                  size={"40px"}
+                />
+                <h1 className="text-2xl font-bold my-2">Reservations</h1>
+                <p>+1 (312) 555-9876</p>
+                <p>Available daily 2:00 PM - 9:00 PM</p>
+              </div>
+              <div className="bg-white rounded-2xl my-2 flex flex-col px-5 py-3 transition-all duration-400 hover:-translate-y-2 ">
+                <Mail
+                  className="py-1 px-2 rounded-3xl bg-amber-600 text-white"
+                  size={"40px"}
+                />
+                <h1 className="text-2xl font-bold my-2">Email us</h1>
+                <p>reservations@example.com</p>
+                <p>Response within 24 hours</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
