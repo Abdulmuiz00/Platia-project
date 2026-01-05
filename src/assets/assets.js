@@ -23,6 +23,8 @@ import chef1 from "../assets/restaurant/chef-1.webp"
 import chef3 from "../assets/restaurant/chef-3.webp"
 import chef6 from "../assets/restaurant/chef-6.webp"
 import chef8 from "../assets/restaurant/chef-8.webp"
+import misc3 from "../assets/restaurant/misc-3.webp"
+import misc7 from "../assets/restaurant/misc-7.webp"
 
 
 const assets = {
@@ -51,6 +53,8 @@ const assets = {
     chef3,
     chef6,
     chef8,
+    misc3,
+    misc7,
 
 }
 

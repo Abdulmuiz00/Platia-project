@@ -29,16 +29,21 @@ import {
   Locate,
   PointerIcon,
   MapPin,
+  
+  
 } from "lucide-react";
 import { useState } from "react";
 import { foodData } from "../components/data"; // <-- your data file
 import { BiStar } from "react-icons/bi";
 import { useEffect, useRef } from "react";
-import { TiSocialFacebook } from "react-icons/ti";
-import { FaFacebook, FaPhone } from "react-icons/fa6";
+import { TiSocialFacebook} from "react-icons/ti";
+import { FaArrowRightLong, FaFacebook, FaPhone } from "react-icons/fa6";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
-
+import { SlCalender, SlDiamond } from "react-icons/sl";
+import BuggyHubMap from "../components/BuggyHubMap";
+import { IoMdCheckmark } from "react-icons/io";
+import { BsHeart, BsStar, BsTrophy } from "react-icons/bs";
 function Home() {
   const categories = [
     "all",
@@ -238,7 +243,7 @@ function Home() {
               </button>
             </div>
           </div>
-          <div className="lg:w-[39%] w-[100%] lg:mt-0 mt-3 md:mt-20">
+          <div className="lg:w-[39%] w-[100%] lg:mt-4 mt-3  md:mt-20">
             <div className="w-[100%] md:w-[100%] bg-black/30 h-auto rounded-3xl lg:ps-auto  pt-6 ps-3">
               <h1
                 className="text-white text-2xl text-center my-2"
@@ -740,7 +745,7 @@ function Home() {
 
       <section id="reservation" className="bg-[#dfbeb0] py-14 px-4 md:px-6 lg:px-20">
         <div className="rounded-2xl h-auto md:h-auto lg:h-[120vh] flex flex-col md:flex-col lg:flex-row gap-5 overflow-hidden">
-          <div className="bg-white w-full md:w-full lg:w-[40%] my-3 rounded-2xl p-3">
+          <div className="bg-white w-full md:w-full lg:w-[40%] rounded-2xl p-3">
             <h1
               style={{ fontFamily: "Plus Jakarta" }}
               className="text-4xl font-bold text-center my-5"
@@ -859,6 +864,176 @@ function Home() {
                 <h1 className="text-2xl font-bold my-2">Email us</h1>
                 <p>reservations@example.com</p>
                 <p>Response within 24 hours</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="findUs" className="bg-[#F8EFEB] h-auto pt-10 px-4 md:px-6 lg:px-20">
+        <div className="flex flex-col md:flex-col lg:flex-row gap-3 my-6 ">
+
+          <div className="rounded-2xl w-[50%] overflow-hidden shadow-lg">
+            <BuggyHubMap />
+          </div>
+
+          <div className="rounded-2xl px-6 py-5 bg-white h-full">
+            <h1 className="text-4xl font-bold text-center my-3">Find Us</h1>
+            <p className="text-center">Visit Us today</p>
+            <div className="flex gap-3 items-center mt-5 border-b pb-5 border-gray-400">
+              <MapPin className="p-2 rounded-3xl bg-orange-300" color="brown" size={"40px"}/>
+              <div className="flex flex-col gap-2">
+                <h1 className="font-bold text-2xl">Our Location</h1>
+                <p>123 Culinary Avenue, Manhattan, NY 10001</p>
+              </div>
+            </div>
+            <div className="flex gap-3 items-center mt-5 border-b pb-5 border-gray-400">
+              <Phone className="p-2 rounded-3xl bg-orange-300" color="brown" size={"40px"}/>
+              <div className="flex flex-col gap-2">
+                <h1 className="font-bold text-2xl">Reservations</h1>
+                <i>We recommend making reservations at least 48 hours in advance</i>
+              </div>
+            </div>
+            <div className="flex gap-3 mt-5 border-b pb-5 border-gray-400">
+              <Clock className="p-2 rounded-3xl bg-orange-300" color="brown" size={"40px"}/>
+              <div className="flex w-full flex-col gap-2">
+                <h1 className="font-bold text-2xl">Hour</h1>
+                <div className="flex  justify-between w-full">
+                  <p>Monday - Thursday</p>
+                  <p className="font-light">11:00 AM - 10:00 PM</p>
+                </div>
+                <div className="flex  justify-between w-full">
+                  <p>Friday - Saturday</p>
+                  <p className="font-light">11:00 AM - 11:30 PM</p>
+                </div>
+                <div className="flex  justify-between w-full">
+                  <p>Sunday</p>
+                  <p className="font-light">10:00 AM - 9:00 PM</p>
+                </div>
+                <div className="flex  justify-between w-full">
+                  <p>Brunch Hours</p>
+                  <p className="font-light">Sat & Sun, 10:00 AM - 2:00 PM</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-4 mt-5 w-full justify-evenly">
+              <button className="rounded-md py-3 w-60 bg-amber-600 text-white transition-all duration-400 hover:-translate-y-2 hover:bg-amber-700">Make a Reservation</button>
+              <button className="rounded-md py-3 w-60 border border-amber-600 text-amber-600 transition-all duration-400 hover:-translate-y-2 hover:bg-orange-200">Contact Us</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#dfbeb0] h-auto py-10 px-4 md:px-6 lg:px-20">
+      <h1
+          style={{ fontFamily: "Plus Jakarta" }}
+          className="text-4xl font-bold text-center mb-3"
+        >
+          Events
+        </h1>
+        <p className="text-center text-gray-600 mb-10">
+        Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit
+        </p>
+        <div className="flex flex-col gap-6 my-4 justify-center text-center mx-auto ">
+          <p className="py-2 px-3 font-bold text-white bg-amber-600 rounded-3xl w-auto mx-auto">LIMITED TIME</p>
+          <h1 className="text-7xl font-bold w-[60%] text-center text-amber-900 mx-auto">Autumn Harvest Festival </h1>
+          <p className="text-[18px]  w-[60%] mx-auto">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+          <p className="py-2 px-3 font-bold text-amber-600 bg-amber-200 rounded-3xl w-auto flex gap-4 items-center  mx-auto"><SlCalender /> October 15 - November 30, 2024</p>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 sm:grid-cols-2 mt-10 md:grid-cols-1 gap-8">
+          <div className="bg-white shadow-lg h-[600px] rounded-2xl overflow-hidden relative hover:scale-103 duration-200 cursor-pointer">
+            <img
+              src={assets.misc3}
+              className=" w-full h-70 object-cover mb-4 hover:scale-103 duration-200 translate"
+            />
+            <div className="flex flex-col py-5 px-5 lg:px-8 lg:py-2 gap-3">
+              <h2 className="font-bold text-3xl mb-1" style={{ fontFamily: "Plus Jakarta" }}>Seasonal Harvest Menu</h2>
+              <p className="px-3 py-1 bg-white flex items-center gap-3 rounded-2xl text-[#d25212] absolute end-5 top-4">
+                {" "}
+               <BiStar size={"20px"}/>
+                CHEF's SPECIAL
+              </p>
+              <p className="text-[17px] text-gray-600">
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+              </p>
+              <div className="flex justify-between mt-3">
+                <p className="items-center flex gap-2  font-bold">
+                 <IoMdCheckmark className=" rounded-2xl bg-[#d25212] text-white p-1" size={"20px"}/>
+                 Farm-to-Table Ingredients
+                </p>
+              </div>
+              <div className="flex justify-between">
+                <p className="items-center flex gap-2 font-bold">
+                 <IoMdCheckmark className=" rounded-2xl bg-[#d25212] text-white p-1" size={"20px"} />
+                 Locally Sourced Product
+                </p>
+              </div>
+                <p className="flex items-center gap-3 text-[#d25212]">Explore Menu <FaArrowRightLong className="hover:translate-x-2 duration-300" /></p>
+            </div>
+          </div>
+          <div className="bg-white shadow-lg h-[600px] rounded-2xl overflow-hidden relative hover:scale-103 duration-200 cursor-pointer">
+            <img
+              src={assets.misc7}
+              className=" w-full h-70 object-cover mb-4 hover:scale-103 duration-200 translate"
+            />
+            <div className="flex flex-col py-5 px-5 lg:px-8 lg:py-2 gap-3">
+              <h2 className="font-bold text-3xl mb-1" style={{ fontFamily: "Plus Jakarta" }}>Wine Pairing Experience</h2>
+              <p className="px-3 py-1 bg-white flex items-center gap-3 rounded-2xl text-[#d25212] absolute end-5 top-4">
+                {" "}
+               <BiStar size={"20px"}/>
+                CHEF's SPECIAL
+              </p>
+              <p className="text-[17px] text-gray-600">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
+              </p>
+              <div className="flex justify-between mt-3">
+                <p className="items-center flex gap-2  font-bold">
+                 <IoMdCheckmark className=" rounded-2xl bg-[#d25212] text-white p-1" size={"20px"}/>
+                 Sommelier Curated
+                </p>
+              </div>
+              <div className="flex justify-between">
+                <p className="items-center flex gap-2 font-bold">
+                 <IoMdCheckmark className=" rounded-2xl bg-[#d25212] text-white p-1" size={"20px"} />
+                 Premium Selection
+                </p>
+              </div>
+                <p className="flex items-center gap-3 text-[#d25212]">Book Tasting <FaArrowRightLong className="hover:translate-x-2 duration-300" /></p>
+            </div>
+          </div>
+        </div>
+        <div className="flex gap-4 items-center mt-10 bg-[#dac3b9] py-9 px-7 rounded-2xl">
+          <div className="flex flex-col gap-4 w-[30%]">
+            <h1 className="font-bold text-4xl" style={{ fontFamily: "Plus Jakarta" }}>Recognition & Awards</h1>
+            <p  className="text-[18px] text-gray-500">At enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+          <div className="grid grid-cols-2 gap-6 w-[70%]">
+            <div className="flex gap-4 px-5 py-6 rounded-2xl items-center bg-white transition-all duration-400 hover:-translate-y-2 ">
+              <BsTrophy size={"40px"} className="rounded-xl bg-[#d25212] text-white p-2"/> 
+              <div className="flex flex-col gap-1">
+                <h1 className="text-2xl font-bold" style={{ fontFamily: "Plus Jakarta" }}>Best Reastruant 2024</h1>
+                <p className="text-[18px] text-gray-600">City Dining Awards</p>
+              </div>
+            </div>
+            <div className="flex gap-4 px-5 py-6 rounded-2xl items-center bg-white transition-all duration-400 hover:-translate-y-2 ">
+              <BsStar size={"40px"} className="rounded-xl bg-[#d25212] text-white p-2"/> 
+              <div className="flex flex-col gap-1">
+                <h1 className="text-2xl font-bold" style={{ fontFamily: "Plus Jakarta" }}>5 Star Rating</h1>
+                <p className="text-[18px] text-gray-600">Local Food Guide</p>
+              </div>
+            </div>
+            <div className="flex gap-4 px-5 py-6 rounded-2xl items-center bg-white transition-all duration-400 hover:-translate-y-2 ">
+              <SlDiamond size={"40px"} className="rounded-xl bg-[#d25212] text-white p-2"/> 
+              <div className="flex flex-col gap-1">
+                <h1 className="text-2xl font-bold" style={{ fontFamily: "Plus Jakarta" }}>Excellence Award</h1>
+                <p className="text-[18px] text-gray-600">Culinary Institute</p>
+              </div>
+            </div>
+            <div className="flex gap-4 px-5 py-6 rounded-2xl items-center bg-white transition-all duration-400 hover:-translate-y-2 ">
+              <BsHeart size={"40px"} className="rounded-xl bg-[#d25212] text-white p-2"/> 
+              <div className="flex flex-col gap-1">
+                <h1 className="text-2xl font-bold" style={{ fontFamily: "Plus Jakarta" }}>Customer Choice</h1>
+                <p className="text-[18px] text-gray-600">Community Favorite</p>
               </div>
             </div>
           </div>
