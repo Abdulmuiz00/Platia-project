@@ -78,3 +78,68 @@ export const foodData = {
     },
   ],
 };
+
+export const galleryfood = {
+  food: [
+    {
+      id: 1,
+      name: "Grilled Salmon",
+      description: "Fresh Salmon with lemon butter sauce.",
+      img:assets.main3,
+    },
+    {
+      id: 2,
+      name: "Raspberry Tart",
+      description: "Sweet pastry filled with creamy vanilla custard.",
+      img: assets.dessert4,
+    },
+     { id: 3,
+      name: "Beef Fillet",
+      description: "Tender beef with herb roasted vegetables. ",
+      img: assets.main7,
+     },
+  ],
+  drinks: [
+    {
+      id: 1,
+      name: "Signature Mocktail",
+      description: "Vibrant blend of fresh citrus and herb.",
+      img: assets.drink2,
+    },
+    {
+      id: 2,
+      name: "Classic Espresso",
+      description: "Rich and aromatic, served to perfection.",
+      img: assets.drink8,
+    },
+  ],
+  interior: [
+    {
+      id: 1,
+      name: "Dining Hall",
+      description:
+        "Spacious, warm and welcoming ambiance.",
+      img: assets.showcase2 ,
+    },
+    {
+      id: 2,
+      name: "Bar Area",
+      description:"Cozy spot for cocktails and good conversation.",
+      img: assets.showcase5 ,
+    },
+  ],
+  staffs: [
+    {
+      id: 1,
+      name: "Chef Maria",
+      description: "Our creative chef behind every dish.",
+      img: assets.chef5,
+    },
+    {
+      id: 2,
+      name: "Sous Chef Daniel",
+      description: "Expert in modern fusion cuisine.",
+      img: assets.chef2,
+    },
+  ],
+};

@@ -29,21 +29,30 @@ import {
   Locate,
   PointerIcon,
   MapPin,
+  Users2,
+  Leaf,
+  Recycle,
   
   
-} from "lucide-react";
+  
+  
+  } from "lucide-react";
 import { useState } from "react";
 import { foodData } from "../components/data"; // <-- your data file
+import { galleryfood } from "../components/data"; // <-- your data file
 import { BiStar } from "react-icons/bi";
 import { useEffect, useRef } from "react";
 import { TiSocialFacebook} from "react-icons/ti";
 import { FaArrowRightLong, FaFacebook, FaPhone } from "react-icons/fa6";
-import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaTwitter, FaWater } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { SlCalender, SlDiamond } from "react-icons/sl";
 import BuggyHubMap from "../components/BuggyHubMap";
 import { IoMdCheckmark } from "react-icons/io";
-import { BsHeart, BsStar, BsTrophy } from "react-icons/bs";
+import { BsHeart, BsStar, BsThunderbolt, BsTrophy } from "react-icons/bs";
+import { PiVan } from "react-icons/pi";
+import { MdOutlineLocationOn } from "react-icons/md";
+import { CgMail } from "react-icons/cg";
 function Home() {
   const categories = [
     "all",
@@ -65,6 +74,27 @@ function Home() {
   ];
 
   const displayedFood = activeTab === "all" ? allFoods : foodData[activeTab];
+
+  const categories2 = [
+    "all",
+    "food",
+    "drinks",
+    "interior",
+    "staffs",
+  ];
+  const [activeTab2, setActiveTab2] = useState("all");
+
+  const allFoods2 = [
+    ...galleryfood.food.map((item) => ({ ...item, category: "Food" })),
+    ...galleryfood.drinks.map((item) => ({ ...item, category: "Drinks" })),
+    ...galleryfood.interior.map((item) => ({
+      ...item,
+      category: "Interior",
+    })),
+    ...galleryfood.staffs.map((item) => ({ ...item, category: "Staffs" })),
+  ];
+
+  const displayedFood2 = activeTab2 === "all" ? allFoods2 : galleryfood[activeTab2];
 
   //testimonials
   const testimonials = [
@@ -173,12 +203,12 @@ function Home() {
       badge: "Smoke-Off Winner",
       image: assets.chef8,
       icon: <Flame className="w-7 h-5" color="#E07946" />,
-
+      
       icon1: <Facebook size={18} />,
       icon2: <Instagram size={18} />,
       icon3: <Twitter size={18} />,
     },
-
+    
     {
       name: "Renee Collins",
       role: "Line Cook",
@@ -186,8 +216,9 @@ function Home() {
       badge: "Guest Favorite",
       image: assets.chef3,
       icon: <Smile className="w-7 h-5" color="#E07946" />,
-
+      
       icon1: <Facebook size={18} />,
+      
       icon2: <Instagram size={18} />,
       icon3: <Twitter size={18} />,
     },
@@ -198,7 +229,7 @@ function Home() {
       <section id="home">
         <video
           src={assets.video}
-          className="lg:h-[100vh] h-[200vh] md:h-[120vh] w-full object-cover"
+          className="h-[200vh] md:h-[120vh] lg:h-[100vh] w-full object-cover"
           autoPlay
           loop
           muted
@@ -207,17 +238,17 @@ function Home() {
         <div className="absolute top-0 left-0 w-full lg:h-full h-[200vh] md:h-[120vh] bg-black/50"></div>
 
         <div className="absolute flex lg:flex-row flex-col justify-between h-[90vh] top-10 lg:px-20 px-2 md:px-5 pt-7">
-          <div className="lg:w-[50%] w-[100%] mt-12 flex flex-col gap-7">
-            <h1 className="text-[#E07844] text-[17px]">
+          <div className=" w-full lg:w-[50%] mt-12 flex flex-col gap-7">
+            <h1 className="text-[#E07844] text-[17px] md:text-[17px] lg:text-[17px]">
               EXPERIENCE CULINARY EXCELLENCE
             </h1>
             <h1
-              className="text-6xl font-extrabold text-white"
+              className="text-[43px] md:text-6xl lg:text-6xl font-extrabold w-full text-white "
               style={{ fontFamily: "Plus Jakarta" }}
             >
               Savor Every Moment at Platia
             </h1>
-            <p className="text-[18px] text-white w-[90%]">
+            <p className="text-[18px] text-white w-full md:w-[90%] lg:w-[90%] text-start ">
               Indulge in authentic Italian cuisine crafted with passion and the
               finest ingridients. From traditional recipes passed down through
               generations to innovate culinary creations, we offer an
@@ -383,7 +414,7 @@ function Home() {
           </div>
         </div>
       </section>
-
+            
       <section id="menu" className="bg-[#dfbeb0] pt-14 pb-5 px-4 md:px-6  lg:px-20">
         <h1
           style={{ fontFamily: "Plus Jakarta" }}
@@ -401,7 +432,7 @@ function Home() {
             <button
               key={cat}
               onClick={() => setActiveTab(cat)}
-              className={`capitalize px-6 py-2 rounded-full transition-all duration-200 transition-transform duration-300 hover:scale-110
+              className={`capitalize px-6 py-2 rounded-full transition-transform duration-300 hover:scale-110
         ${
           activeTab === cat
             ? "bg-orange-600 text-white border-orange-600"
@@ -870,11 +901,11 @@ function Home() {
         </div>
       </section>
 
-      <section id="findUs" className="bg-[#F8EFEB] h-auto pt-10 px-4 md:px-6 lg:px-20">
+      <section className="bg-[#F8EFEB] py-10 px-4 md:px-6 lg:px-20 md:min-h-screen lg:h-auto">
         <div className="flex flex-col md:flex-col lg:flex-row gap-3 my-6 ">
 
-          <div className="rounded-2xl w-[50%] overflow-hidden shadow-lg">
-            <BuggyHubMap />
+          <div className="rounded-2xl w-full md:w-full lg:w-[50%] overflow-hidden shadow-lg">
+            <BuggyHubMap className={"h-full md:h-[300px] lg:h-full w-full"}/>
           </div>
 
           <div className="rounded-2xl px-6 py-5 bg-white h-full">
@@ -924,7 +955,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="bg-[#dfbeb0] h-auto py-10 px-4 md:px-6 lg:px-20">
+      <section className="bg-[#dfbeb0] h-[560vh] md:h-[375vh] lg:h-auto py-10 px-4 md:px-6 lg:px-20">
       <h1
           style={{ fontFamily: "Plus Jakarta" }}
           className="text-4xl font-bold text-center mb-3"
@@ -936,8 +967,8 @@ function Home() {
         </p>
         <div className="flex flex-col gap-6 my-4 justify-center text-center mx-auto ">
           <p className="py-2 px-3 font-bold text-white bg-amber-600 rounded-3xl w-auto mx-auto">LIMITED TIME</p>
-          <h1 className="text-7xl font-bold w-[60%] text-center text-amber-900 mx-auto">Autumn Harvest Festival </h1>
-          <p className="text-[18px]  w-[60%] mx-auto">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+          <h1 className="text-5xl md:text-5xl lg:text-7xl font-bold w-full md:w-full lg:w-[60%] text-center text-amber-900 mx-auto">Autumn Harvest Festival </h1>
+          <p className="ltext-[18px] w-full md:w-full lg:w-[60%] mx-auto">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
           <p className="py-2 px-3 font-bold text-amber-600 bg-amber-200 rounded-3xl w-auto flex gap-4 items-center  mx-auto"><SlCalender /> October 15 - November 30, 2024</p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 sm:grid-cols-2 mt-10 md:grid-cols-1 gap-8">
@@ -1002,12 +1033,12 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="flex gap-4 items-center mt-10 bg-[#dac3b9] py-9 px-7 rounded-2xl">
-          <div className="flex flex-col gap-4 w-[30%]">
-            <h1 className="font-bold text-4xl" style={{ fontFamily: "Plus Jakarta" }}>Recognition & Awards</h1>
+        <div className="flex flex-col md:flex-col lg:flex-row gap-4 items-center mt-10 bg-[#dac3b9] py-9 px-7 rounded-2xl">
+          <div className="flex flex-col gap-4 w-full md:w-full lg:w-[30%]">
+            <h1 className="font-bold text-5xl md:text-4xl lg:text-4xl" style={{ fontFamily: "Plus Jakarta" }}>Recognition & Awards</h1>
             <p  className="text-[18px] text-gray-500">At enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
-          <div className="grid grid-cols-2 gap-6 w-[70%]">
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6 w-full md:w-full lg:w-[70%]">
             <div className="flex gap-4 px-5 py-6 rounded-2xl items-center bg-white transition-all duration-400 hover:-translate-y-2 ">
               <BsTrophy size={"40px"} className="rounded-xl bg-[#d25212] text-white p-2"/> 
               <div className="flex flex-col gap-1">
@@ -1038,7 +1069,151 @@ function Home() {
             </div>
           </div>
         </div>
+        <div className="flex flex-col md:flex-col lg:flex-row gap-4 mt-8 h-[560px] justify-between">
+          <div className="bg-white rounded-2xl py-5 px-6 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 w-full md-w-full lg:w-[50%]" >
+            <div className="col-span-1 md:col-span-1 lg:col-span-2 flex items-center gap-8">
+              <Users2 size={70} className="bg-[#d25212] rounded-xl p-4 text-white"/>
+              <div className="flex flex-col gap-1">
+                <h1 className="text-4xl font-bold" style={{ fontFamily: "Plus Jakarta" }}>Community Involvement</h1>
+                <p className="text-gray-600 text-[18px]">Supporting local farmers and charity since 2015</p>
+              </div>
+            </div>
+            <div className="p-7 flex flex-col bg-[#d0a38c42] gap-4 rounded-2xl items-center justify-center text-center">
+              <h1 className="text-[#d25212] text-4xl font-bold">$50k+</h1>
+              <p className="text-gray-700 text-[18px]">Donated to Local Charities</p>
+            </div>
+            <div className="p-7 flex flex-col bg-[#d0a38c42] gap-4 rounded-2xl items-center justify-center text-center">
+              <h1 className="text-[#d25212] text-4xl font-bold">25k+</h1>
+              <p className="text-gray-700 text-[18px]">Local Farm Partners</p>
+            </div>
+            <div className="p-7 flex flex-col bg-[#d0a38c42] gap-4 rounded-2xl items-center justify-center text-center">
+              <h1 className="text-[#d25212] text-4xl font-bold">100+</h1>
+              <p className="text-gray-700 text-[18px]">Community Events Hosted</p>
+            </div>
+            <div className="p-7 flex flex-col bg-[#d0a38c42] gap-4 rounded-2xl items-center justify-center text-center">
+              <h1 className="text-[#d25212] text-4xl font-bold">500+</h1>
+              <p className="text-gray-700 text-[18px]">Volunteer Hours</p>
+            </div>
+          </div>
+          <div className="bg-white rounded-2xl py-5 px-6 flex flex-col gap-4 w-full md:w-full lg:w-[50%]">
+            <div className=" flex items-center gap-8 my-7">
+              <Recycle size={70} className="bg-[#d25212] rounded-xl p-4 text-white"/>
+              <div className="flex flex-col gap-1">
+                <h1 className="text-4xl font-bold" style={{ fontFamily: "Plus Jakarta" }}>Eco-Friendly Practices</h1>
+                <p className="text-gray-600 text-[18px]">Committed to sustainable dining and zero waste</p>
+              </div>
+            </div>
+            <div className="flex gap-4 border-b items-center pb-5 border-gray-300 my-3">
+              <Leaf size={20} color="#d25212"/>
+              <p className="text-[18px] font-bold">100% Compostable Packaging</p>
+            </div>
+            <div className="flex gap-4 border-b items-center pb-5 border-gray-300 my-3">
+              <FaWater size={20} color="#d25212"/>
+              <p className="text-[18px] font-bold">Water Conservation Program</p>
+            </div>
+            <div className="flex gap-4 border-b items-center pb-5 border-gray-300 my-3">
+              <BsThunderbolt size={20} color="#d25212"/>
+              <p className="text-[18px] font-bold">Renewable Energy Powered</p>
+            </div>
+            <div className="flex items-center gap-4 pb-5 my-3">
+              <PiVan size={20} color="#d25212"/>
+              <p className="text-[18px] font-bold">Local Sourcing Priority</p>
+            </div>
+          </div>
+         
+        </div>
       </section>
+
+      <section id="gallery" className="bg-[#F8EFEB] pt-14 pb-5 px-4 md:px-6  lg:px-20">
+        <h1
+          style={{ fontFamily: "Plus Jakarta" }}
+          className="text-4xl font-bold text-center mb-3"
+        >
+          Gallery
+        </h1>
+        <p className="text-center text-gray-600 mb-10">
+        Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit
+        </p>
+    
+        {/* CATEGORY NAV */}
+        <nav className="lg:flex lg:justify-center grid-cols-3 md:grid md:grid-cols-5 md:gap-4 gap-20 p-4 md:p-2 mb-12">
+          {categories2.map((dog) => (
+            <button
+              key={dog}
+              onClick={() => setActiveTab2(dog)}
+              className={`capitalize px-6 py-2 rounded-full transition-transform duration-300 hover:scale-110
+        ${
+          activeTab2 === dog
+            ? "bg-orange-600 text-white border-orange-600"
+            : "border-gray-400 text-gray-700 hover:text-orange-600"
+        }
+      `}
+            >
+              {dog === "all"
+                ? "All"
+                : dog.charAt(0).toUpperCase() + dog.slice(1)}
+            </button>
+          ))}
+        </nav>
+    
+        {/* FOOD CARDS */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 md:grid-cols-1 gap-8">
+          {displayedFood2.map((item) => (
+            <div
+              key={`${item.category}-${item.id}`} // use category + id
+              className="bg-white shadow-lg h-[350px] rounded-2xl overflow-hidden relative hover:scale-103 duration-200 cursor-pointer"
+            >
+              <img
+                src={item.img}
+                alt={item.name}
+                className=" w-full h-50 object-cover mb-4"
+              />
+              <div className="flex flex-col p-5 lg:p-3 gap-2">
+                <h2 className="font-bold text-xl mb-1">{item.name}</h2>
+                <p>{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+      <h1
+          style={{ fontFamily: "Plus Jakarta" }}
+          className="text-4xl font-bold text-center mb-3"
+        >
+          Contact
+        </h1>
+        <p className="text-center text-gray-600 mb-10">
+        Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit
+        </p>
+        <div className="flex">
+          <div className="flex item-center ">
+            <MdOutlineLocationOn />
+            <div>
+              <h1 className="font-bold text-2xl">Our Address</h1>
+              <p className="text-[18px] text-gray-700">1842 Maple Avenue, Portland, Oregon 97204</p>
+            </div>
+          </div>
+          <div className="flex item-center ">
+            <CgMail />
+            <div>
+              <h1 className="font-bold text-2xl">Email Address</h1>
+              <p className="text-[18px] text-gray-700">info@example.comcontact@example.com</p>
+            </div>
+          </div>
+          <div className="flex item-center ">
+            <MdOutlineLocationOn />
+            <div>
+              <h1 className="font-bold text-2xl">Our Address</h1>
+              <p className="text-[18px] text-gray-700">1842 Maple Avenue, Portland, Oregon 97204</p>
+            </div>
+          </div>
+        </div>
+        
+    
+      </section>
+
     </div>
   );
 }
