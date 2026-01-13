@@ -32,27 +32,27 @@ import {
   Users2,
   Leaf,
   Recycle,
-  
-  
-  
-  
-  } from "lucide-react";
+  User,
+  AlignLeft,
+  MessageSquare,
+} from "lucide-react";
 import { useState } from "react";
 import { foodData } from "../components/data"; // <-- your data file
 import { galleryfood } from "../components/data"; // <-- your data file
 import { BiStar } from "react-icons/bi";
 import { useEffect, useRef } from "react";
-import { TiSocialFacebook} from "react-icons/ti";
+import { TiSocialFacebook } from "react-icons/ti";
 import { FaArrowRightLong, FaFacebook, FaPhone } from "react-icons/fa6";
 import { FaFacebookF, FaInstagram, FaTwitter, FaWater } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { SlCalender, SlDiamond } from "react-icons/sl";
 import BuggyHubMap from "../components/BuggyHubMap";
 import { IoMdCheckmark } from "react-icons/io";
-import { BsHeart, BsStar, BsThunderbolt, BsTrophy } from "react-icons/bs";
+import { BsHeart, BsStar,  BsThunderbolt, BsTrophy } from "react-icons/bs";
 import { PiVan } from "react-icons/pi";
 import { MdOutlineLocationOn } from "react-icons/md";
-import { CgMail } from "react-icons/cg";
+import { TfiEmail, TfiHeadphone } from "react-icons/tfi";
+import { IoPaperPlane } from "react-icons/io5";
 function Home() {
   const categories = [
     "all",
@@ -75,13 +75,7 @@ function Home() {
 
   const displayedFood = activeTab === "all" ? allFoods : foodData[activeTab];
 
-  const categories2 = [
-    "all",
-    "food",
-    "drinks",
-    "interior",
-    "staffs",
-  ];
+  const categories2 = ["all", "food", "drinks", "interior", "staffs"];
   const [activeTab2, setActiveTab2] = useState("all");
 
   const allFoods2 = [
@@ -94,7 +88,8 @@ function Home() {
     ...galleryfood.staffs.map((item) => ({ ...item, category: "Staffs" })),
   ];
 
-  const displayedFood2 = activeTab2 === "all" ? allFoods2 : galleryfood[activeTab2];
+  const displayedFood2 =
+    activeTab2 === "all" ? allFoods2 : galleryfood[activeTab2];
 
   //testimonials
   const testimonials = [
@@ -203,12 +198,12 @@ function Home() {
       badge: "Smoke-Off Winner",
       image: assets.chef8,
       icon: <Flame className="w-7 h-5" color="#E07946" />,
-      
+
       icon1: <Facebook size={18} />,
       icon2: <Instagram size={18} />,
       icon3: <Twitter size={18} />,
     },
-    
+
     {
       name: "Renee Collins",
       role: "Line Cook",
@@ -216,9 +211,9 @@ function Home() {
       badge: "Guest Favorite",
       image: assets.chef3,
       icon: <Smile className="w-7 h-5" color="#E07946" />,
-      
+
       icon1: <Facebook size={18} />,
-      
+
       icon2: <Instagram size={18} />,
       icon3: <Twitter size={18} />,
     },
@@ -229,7 +224,7 @@ function Home() {
       <section id="home">
         <video
           src={assets.video}
-          className="h-[200vh] md:h-[120vh] lg:h-[100vh] w-full object-cover"
+          className="h-[200vh] md:h-[120vh] lg:h-screen w-full object-cover"
           autoPlay
           loop
           muted
@@ -274,8 +269,8 @@ function Home() {
               </button>
             </div>
           </div>
-          <div className="lg:w-[39%] w-[100%] lg:mt-4 mt-3  md:mt-20">
-            <div className="w-[100%] md:w-[100%] bg-black/30 h-auto rounded-3xl lg:ps-auto  pt-6 ps-3">
+          <div className="lg:w-[39%] w-full lg:mt-4 mt-3  md:mt-20">
+            <div className="w-full md:w-full bg-black/30 h-auto rounded-3xl lg:ps-auto  pt-6 ps-3">
               <h1
                 className="text-white text-2xl text-center my-2"
                 style={{ fontFamily: "plus" }}
@@ -339,7 +334,10 @@ function Home() {
         </div>
       </section>
 
-      <section id="about" className="lg:h-[120vh] md:h-auto h-auto bg-[#F8EFEB] py-5 lg:px-20 md:px-6 px-2">
+      <section
+        id="about"
+        className="lg:h-[120vh] md:h-auto h-auto bg-[#F8EFEB] py-5 lg:px-20 md:px-6 px-2"
+      >
         <h1
           style={{ fontFamily: "Plus Jakarta" }}
           className="text-4xl font-bold text-center my-5"
@@ -351,7 +349,7 @@ function Home() {
           assumenda ea reiciendis!
         </p>
         <div className="flex lg:flex-row md:flex-col flex-col relative md:gap-7">
-          <div className="lg:w-[50%] md:w-[100%] w-[100%] flex flex-col gap-3">
+          <div className="lg:w-[50%] md:w-full w-full flex flex-col gap-3">
             <h1
               style={{ fontFamily: "Plus Jakarta" }}
               className="lg:text-3xl md:text-3xl text-4xl font-extrabold my-5"
@@ -391,7 +389,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="lg:w-[50%] md:w-[100%] w-[100%] grid grid-cols-12 gap-3 lg:p-5 md:p-5 p-1 mt-10 lg:mt-0 md:mt-6">
+          <div className="lg:w-[50%] md:w-full w-full grid grid-cols-12 gap-3 lg:p-5 md:p-5 p-1 mt-10 lg:mt-0 md:mt-6">
             <img
               src={assets.showcase3}
               alt=""
@@ -414,8 +412,11 @@ function Home() {
           </div>
         </div>
       </section>
-            
-      <section id="menu" className="bg-[#dfbeb0] pt-14 pb-5 px-4 md:px-6  lg:px-20">
+
+      <section
+        id="menu"
+        className="bg-[#dfbeb0] pt-14 pb-5 px-4 md:px-6  lg:px-20"
+      >
         <h1
           style={{ fontFamily: "Plus Jakarta" }}
           className="text-4xl font-bold text-center mb-3"
@@ -560,7 +561,10 @@ function Home() {
         </div>
       </section>
 
-      <section id="Testimonials" className="bg-[#dfbeb0] py-14 px-4 md:px-6  lg:px-20">
+      <section
+        id="Testimonials"
+        className="bg-[#dfbeb0] py-14 px-4 md:px-6  lg:px-20"
+      >
         {/* Title */}
         <div className="max-w-6xl mx-auto text-center px-5 mb-12">
           <h2 className="text-4xl font-bold text-gray-800 mb-3">
@@ -582,7 +586,7 @@ function Home() {
             style={{ transform: `translateX(-${index * 100}%)` }}
           >
             {testimonials.map((item, i) => (
-              <div key={i} className="w-full flex-shrink-0 px-5">
+              <div key={i} className="w-full shrink-0 px-5">
                 <div className="bg-white rounded-2xl p-8 shadow-md">
                   {/* Stars */}
                   <div className="flex gap-1 text-yellow-500 text-xl mb-4">
@@ -635,7 +639,10 @@ function Home() {
         </div>
       </section>
 
-      <section id="chefs" className="bg-[#F8EFEB] pt-10 px-4 md:px-6 lg:px-20 h-auto">
+      <section
+        id="chefs"
+        className="bg-[#F8EFEB] pt-10 px-4 md:px-6 lg:px-20 h-auto"
+      >
         <h1
           style={{ fontFamily: "Plus Jakarta" }}
           className="text-4xl font-bold text-center mb-3"
@@ -774,7 +781,10 @@ function Home() {
         </div>
       </section>
 
-      <section id="reservation" className="bg-[#dfbeb0] py-14 px-4 md:px-6 lg:px-20">
+      <section
+        id="reservation"
+        className="bg-[#dfbeb0] py-14 px-4 md:px-6 lg:px-20"
+      >
         <div className="rounded-2xl h-auto md:h-auto lg:h-[120vh] flex flex-col md:flex-col lg:flex-row gap-5 overflow-hidden">
           <div className="bg-white w-full md:w-full lg:w-[40%] rounded-2xl p-3">
             <h1
@@ -903,30 +913,43 @@ function Home() {
 
       <section className="bg-[#F8EFEB] py-10 px-4 md:px-6 lg:px-20 md:min-h-screen lg:h-auto">
         <div className="flex flex-col md:flex-col lg:flex-row gap-3 my-6 ">
-
           <div className="rounded-2xl w-full md:w-full lg:w-[50%] overflow-hidden shadow-lg">
-            <BuggyHubMap className={"h-full md:h-[300px] lg:h-full w-full"}/>
+            <BuggyHubMap className={"h-full md:h-[300px] lg:h-full w-full"} />
           </div>
 
           <div className="rounded-2xl px-6 py-5 bg-white h-full">
             <h1 className="text-4xl font-bold text-center my-3">Find Us</h1>
             <p className="text-center">Visit Us today</p>
             <div className="flex gap-3 items-center mt-5 border-b pb-5 border-gray-400">
-              <MapPin className="p-2 rounded-3xl bg-orange-300" color="brown" size={"40px"}/>
+              <MapPin
+                className="p-2 rounded-3xl bg-orange-300"
+                color="brown"
+                size={"40px"}
+              />
               <div className="flex flex-col gap-2">
                 <h1 className="font-bold text-2xl">Our Location</h1>
                 <p>123 Culinary Avenue, Manhattan, NY 10001</p>
               </div>
             </div>
             <div className="flex gap-3 items-center mt-5 border-b pb-5 border-gray-400">
-              <Phone className="p-2 rounded-3xl bg-orange-300" color="brown" size={"40px"}/>
+              <Phone
+                className="p-2 rounded-3xl bg-orange-300"
+                color="brown"
+                size={"40px"}
+              />
               <div className="flex flex-col gap-2">
                 <h1 className="font-bold text-2xl">Reservations</h1>
-                <i>We recommend making reservations at least 48 hours in advance</i>
+                <i>
+                  We recommend making reservations at least 48 hours in advance
+                </i>
               </div>
             </div>
             <div className="flex gap-3 mt-5 border-b pb-5 border-gray-400">
-              <Clock className="p-2 rounded-3xl bg-orange-300" color="brown" size={"40px"}/>
+              <Clock
+                className="p-2 rounded-3xl bg-orange-300"
+                color="brown"
+                size={"40px"}
+              />
               <div className="flex w-full flex-col gap-2">
                 <h1 className="font-bold text-2xl">Hour</h1>
                 <div className="flex  justify-between w-full">
@@ -948,28 +971,43 @@ function Home() {
               </div>
             </div>
             <div className="flex gap-4 mt-5 w-full justify-evenly">
-              <button className="rounded-md py-3 w-60 bg-amber-600 text-white transition-all duration-400 hover:-translate-y-2 hover:bg-amber-700">Make a Reservation</button>
-              <button className="rounded-md py-3 w-60 border border-amber-600 text-amber-600 transition-all duration-400 hover:-translate-y-2 hover:bg-orange-200">Contact Us</button>
+              <button className="rounded-md py-3 w-60 bg-amber-600 text-white transition-all duration-400 hover:-translate-y-2 hover:bg-amber-700">
+                Make a Reservation
+              </button>
+              <button className="rounded-md py-3 w-60 border border-amber-600 text-amber-600 transition-all duration-400 hover:-translate-y-2 hover:bg-orange-200">
+                Contact Us
+              </button>
             </div>
           </div>
         </div>
       </section>
 
       <section className="bg-[#dfbeb0] h-[560vh] md:h-[375vh] lg:h-auto py-10 px-4 md:px-6 lg:px-20">
-      <h1
+        <h1
           style={{ fontFamily: "Plus Jakarta" }}
           className="text-4xl font-bold text-center mb-3"
         >
           Events
         </h1>
         <p className="text-center text-gray-600 mb-10">
-        Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit
+          Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
+          consectetur velit
         </p>
         <div className="flex flex-col gap-6 my-4 justify-center text-center mx-auto ">
-          <p className="py-2 px-3 font-bold text-white bg-amber-600 rounded-3xl w-auto mx-auto">LIMITED TIME</p>
-          <h1 className="text-5xl md:text-5xl lg:text-7xl font-bold w-full md:w-full lg:w-[60%] text-center text-amber-900 mx-auto">Autumn Harvest Festival </h1>
-          <p className="ltext-[18px] w-full md:w-full lg:w-[60%] mx-auto">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-          <p className="py-2 px-3 font-bold text-amber-600 bg-amber-200 rounded-3xl w-auto flex gap-4 items-center  mx-auto"><SlCalender /> October 15 - November 30, 2024</p>
+          <p className="py-2 px-3 font-bold text-white bg-amber-600 rounded-3xl w-auto mx-auto">
+            LIMITED TIME
+          </p>
+          <h1 className="text-5xl md:text-5xl lg:text-7xl font-bold w-full md:w-full lg:w-[60%] text-center text-amber-900 mx-auto">
+            Autumn Harvest Festival{" "}
+          </h1>
+          <p className="ltext-[18px] w-full md:w-full lg:w-[60%] mx-auto">
+            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris.
+          </p>
+          <p className="py-2 px-3 font-bold text-amber-600 bg-amber-200 rounded-3xl w-auto flex gap-4 items-center  mx-auto">
+            <SlCalender /> October 15 - November 30, 2024
+          </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 sm:grid-cols-2 mt-10 md:grid-cols-1 gap-8">
           <div className="bg-white shadow-lg h-[600px] rounded-2xl overflow-hidden relative hover:scale-103 duration-200 cursor-pointer">
@@ -978,28 +1016,44 @@ function Home() {
               className=" w-full h-70 object-cover mb-4 hover:scale-103 duration-200 translate"
             />
             <div className="flex flex-col py-5 px-5 lg:px-8 lg:py-2 gap-3">
-              <h2 className="font-bold text-3xl mb-1" style={{ fontFamily: "Plus Jakarta" }}>Seasonal Harvest Menu</h2>
+              <h2
+                className="font-bold text-3xl mb-1"
+                style={{ fontFamily: "Plus Jakarta" }}
+              >
+                Seasonal Harvest Menu
+              </h2>
               <p className="px-3 py-1 bg-white flex items-center gap-3 rounded-2xl text-[#d25212] absolute end-5 top-4">
                 {" "}
-               <BiStar size={"20px"}/>
+                <BiStar size={"20px"} />
                 CHEF's SPECIAL
               </p>
               <p className="text-[17px] text-gray-600">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident.
               </p>
               <div className="flex justify-between mt-3">
                 <p className="items-center flex gap-2  font-bold">
-                 <IoMdCheckmark className=" rounded-2xl bg-[#d25212] text-white p-1" size={"20px"}/>
-                 Farm-to-Table Ingredients
+                  <IoMdCheckmark
+                    className=" rounded-2xl bg-[#d25212] text-white p-1"
+                    size={"20px"}
+                  />
+                  Farm-to-Table Ingredients
                 </p>
               </div>
               <div className="flex justify-between">
                 <p className="items-center flex gap-2 font-bold">
-                 <IoMdCheckmark className=" rounded-2xl bg-[#d25212] text-white p-1" size={"20px"} />
-                 Locally Sourced Product
+                  <IoMdCheckmark
+                    className=" rounded-2xl bg-[#d25212] text-white p-1"
+                    size={"20px"}
+                  />
+                  Locally Sourced Product
                 </p>
               </div>
-                <p className="flex items-center gap-3 text-[#d25212]">Explore Menu <FaArrowRightLong className="hover:translate-x-2 duration-300" /></p>
+              <p className="flex items-center gap-3 text-[#d25212]">
+                Explore Menu{" "}
+                <FaArrowRightLong className="hover:translate-x-2 duration-300" />
+              </p>
             </div>
           </div>
           <div className="bg-white shadow-lg h-[600px] rounded-2xl overflow-hidden relative hover:scale-103 duration-200 cursor-pointer">
@@ -1008,79 +1062,147 @@ function Home() {
               className=" w-full h-70 object-cover mb-4 hover:scale-103 duration-200 translate"
             />
             <div className="flex flex-col py-5 px-5 lg:px-8 lg:py-2 gap-3">
-              <h2 className="font-bold text-3xl mb-1" style={{ fontFamily: "Plus Jakarta" }}>Wine Pairing Experience</h2>
+              <h2
+                className="font-bold text-3xl mb-1"
+                style={{ fontFamily: "Plus Jakarta" }}
+              >
+                Wine Pairing Experience
+              </h2>
               <p className="px-3 py-1 bg-white flex items-center gap-3 rounded-2xl text-[#d25212] absolute end-5 top-4">
                 {" "}
-               <BiStar size={"20px"}/>
+                <BiStar size={"20px"} />
                 CHEF's SPECIAL
               </p>
               <p className="text-[17px] text-gray-600">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae ab illo.
               </p>
               <div className="flex justify-between mt-3">
                 <p className="items-center flex gap-2  font-bold">
-                 <IoMdCheckmark className=" rounded-2xl bg-[#d25212] text-white p-1" size={"20px"}/>
-                 Sommelier Curated
+                  <IoMdCheckmark
+                    className=" rounded-2xl bg-[#d25212] text-white p-1"
+                    size={"20px"}
+                  />
+                  Sommelier Curated
                 </p>
               </div>
               <div className="flex justify-between">
                 <p className="items-center flex gap-2 font-bold">
-                 <IoMdCheckmark className=" rounded-2xl bg-[#d25212] text-white p-1" size={"20px"} />
-                 Premium Selection
+                  <IoMdCheckmark
+                    className=" rounded-2xl bg-[#d25212] text-white p-1"
+                    size={"20px"}
+                  />
+                  Premium Selection
                 </p>
               </div>
-                <p className="flex items-center gap-3 text-[#d25212]">Book Tasting <FaArrowRightLong className="hover:translate-x-2 duration-300" /></p>
+              <p className="flex items-center gap-3 text-[#d25212]">
+                Book Tasting{" "}
+                <FaArrowRightLong className="hover:translate-x-2 duration-300" />
+              </p>
             </div>
           </div>
         </div>
         <div className="flex flex-col md:flex-col lg:flex-row gap-4 items-center mt-10 bg-[#dac3b9] py-9 px-7 rounded-2xl">
           <div className="flex flex-col gap-4 w-full md:w-full lg:w-[30%]">
-            <h1 className="font-bold text-5xl md:text-4xl lg:text-4xl" style={{ fontFamily: "Plus Jakarta" }}>Recognition & Awards</h1>
-            <p  className="text-[18px] text-gray-500">At enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <h1
+              className="font-bold text-5xl md:text-4xl lg:text-4xl"
+              style={{ fontFamily: "Plus Jakarta" }}
+            >
+              Recognition & Awards
+            </h1>
+            <p className="text-[18px] text-gray-500">
+              At enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
           </div>
           <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6 w-full md:w-full lg:w-[70%]">
             <div className="flex gap-4 px-5 py-6 rounded-2xl items-center bg-white transition-all duration-400 hover:-translate-y-2 ">
-              <BsTrophy size={"40px"} className="rounded-xl bg-[#d25212] text-white p-2"/> 
+              <BsTrophy
+                size={"40px"}
+                className="rounded-xl bg-[#d25212] text-white p-2"
+              />
               <div className="flex flex-col gap-1">
-                <h1 className="text-2xl font-bold" style={{ fontFamily: "Plus Jakarta" }}>Best Reastruant 2024</h1>
+                <h1
+                  className="text-2xl font-bold"
+                  style={{ fontFamily: "Plus Jakarta" }}
+                >
+                  Best Reastruant 2024
+                </h1>
                 <p className="text-[18px] text-gray-600">City Dining Awards</p>
               </div>
             </div>
             <div className="flex gap-4 px-5 py-6 rounded-2xl items-center bg-white transition-all duration-400 hover:-translate-y-2 ">
-              <BsStar size={"40px"} className="rounded-xl bg-[#d25212] text-white p-2"/> 
+              <BsStar
+                size={"40px"}
+                className="rounded-xl bg-[#d25212] text-white p-2"
+              />
               <div className="flex flex-col gap-1">
-                <h1 className="text-2xl font-bold" style={{ fontFamily: "Plus Jakarta" }}>5 Star Rating</h1>
+                <h1
+                  className="text-2xl font-bold"
+                  style={{ fontFamily: "Plus Jakarta" }}
+                >
+                  5 Star Rating
+                </h1>
                 <p className="text-[18px] text-gray-600">Local Food Guide</p>
               </div>
             </div>
             <div className="flex gap-4 px-5 py-6 rounded-2xl items-center bg-white transition-all duration-400 hover:-translate-y-2 ">
-              <SlDiamond size={"40px"} className="rounded-xl bg-[#d25212] text-white p-2"/> 
+              <SlDiamond
+                size={"40px"}
+                className="rounded-xl bg-[#d25212] text-white p-2"
+              />
               <div className="flex flex-col gap-1">
-                <h1 className="text-2xl font-bold" style={{ fontFamily: "Plus Jakarta" }}>Excellence Award</h1>
+                <h1
+                  className="text-2xl font-bold"
+                  style={{ fontFamily: "Plus Jakarta" }}
+                >
+                  Excellence Award
+                </h1>
                 <p className="text-[18px] text-gray-600">Culinary Institute</p>
               </div>
             </div>
             <div className="flex gap-4 px-5 py-6 rounded-2xl items-center bg-white transition-all duration-400 hover:-translate-y-2 ">
-              <BsHeart size={"40px"} className="rounded-xl bg-[#d25212] text-white p-2"/> 
+              <BsHeart
+                size={"40px"}
+                className="rounded-xl bg-[#d25212] text-white p-2"
+              />
               <div className="flex flex-col gap-1">
-                <h1 className="text-2xl font-bold" style={{ fontFamily: "Plus Jakarta" }}>Customer Choice</h1>
+                <h1
+                  className="text-2xl font-bold"
+                  style={{ fontFamily: "Plus Jakarta" }}
+                >
+                  Customer Choice
+                </h1>
                 <p className="text-[18px] text-gray-600">Community Favorite</p>
               </div>
             </div>
           </div>
         </div>
         <div className="flex flex-col md:flex-col lg:flex-row gap-4 mt-8 h-[560px] justify-between">
-          <div className="bg-white rounded-2xl py-5 px-6 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 w-full md-w-full lg:w-[50%]" >
+          <div className="bg-white rounded-2xl py-5 px-6 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 w-full md-w-full lg:w-[50%]">
             <div className="col-span-1 md:col-span-1 lg:col-span-2 flex items-center gap-8">
-              <Users2 size={70} className="bg-[#d25212] rounded-xl p-4 text-white"/>
+              <Users2
+                size={70}
+                className="bg-[#d25212] rounded-xl p-4 text-white"
+              />
               <div className="flex flex-col gap-1">
-                <h1 className="text-4xl font-bold" style={{ fontFamily: "Plus Jakarta" }}>Community Involvement</h1>
-                <p className="text-gray-600 text-[18px]">Supporting local farmers and charity since 2015</p>
+                <h1
+                  className="text-4xl font-bold"
+                  style={{ fontFamily: "Plus Jakarta" }}
+                >
+                  Community Involvement
+                </h1>
+                <p className="text-gray-600 text-[18px]">
+                  Supporting local farmers and charity since 2015
+                </p>
               </div>
             </div>
             <div className="p-7 flex flex-col bg-[#d0a38c42] gap-4 rounded-2xl items-center justify-center text-center">
               <h1 className="text-[#d25212] text-4xl font-bold">$50k+</h1>
-              <p className="text-gray-700 text-[18px]">Donated to Local Charities</p>
+              <p className="text-gray-700 text-[18px]">
+                Donated to Local Charities
+              </p>
             </div>
             <div className="p-7 flex flex-col bg-[#d0a38c42] gap-4 rounded-2xl items-center justify-center text-center">
               <h1 className="text-[#d25212] text-4xl font-bold">25k+</h1>
@@ -1088,43 +1210,61 @@ function Home() {
             </div>
             <div className="p-7 flex flex-col bg-[#d0a38c42] gap-4 rounded-2xl items-center justify-center text-center">
               <h1 className="text-[#d25212] text-4xl font-bold">100+</h1>
-              <p className="text-gray-700 text-[18px]">Community Events Hosted</p>
+              <p className="text-gray-700 text-[18px]">
+                Community Events Hosted
+              </p>
             </div>
             <div className="p-7 flex flex-col bg-[#d0a38c42] gap-4 rounded-2xl items-center justify-center text-center">
               <h1 className="text-[#d25212] text-4xl font-bold">500+</h1>
               <p className="text-gray-700 text-[18px]">Volunteer Hours</p>
             </div>
           </div>
-          <div className="bg-white rounded-2xl py-5 px-6 flex flex-col gap-4 w-full md:w-full lg:w-[50%]">
+          <div className="bg-white rounded-2xl py-5 px-6 flex md:mt-4 flex-col gap-4 w-full md:w-full lg:w-[50%]">
             <div className=" flex items-center gap-8 my-7">
-              <Recycle size={70} className="bg-[#d25212] rounded-xl p-4 text-white"/>
+              <Recycle
+                size={70}
+                className="bg-[#d25212] rounded-xl p-4 text-white"
+              />
               <div className="flex flex-col gap-1">
-                <h1 className="text-4xl font-bold" style={{ fontFamily: "Plus Jakarta" }}>Eco-Friendly Practices</h1>
-                <p className="text-gray-600 text-[18px]">Committed to sustainable dining and zero waste</p>
+                <h1
+                  className="text-4xl font-bold"
+                  style={{ fontFamily: "Plus Jakarta" }}
+                >
+                  Eco-Friendly Practices
+                </h1>
+                <p className="text-gray-600 text-[18px]">
+                  Committed to sustainable dining and zero waste
+                </p>
               </div>
             </div>
             <div className="flex gap-4 border-b items-center pb-5 border-gray-300 my-3">
-              <Leaf size={20} color="#d25212"/>
-              <p className="text-[18px] font-bold">100% Compostable Packaging</p>
+              <Leaf size={20} color="#d25212" />
+              <p className="text-[18px] font-bold">
+                100% Compostable Packaging
+              </p>
             </div>
             <div className="flex gap-4 border-b items-center pb-5 border-gray-300 my-3">
-              <FaWater size={20} color="#d25212"/>
-              <p className="text-[18px] font-bold">Water Conservation Program</p>
+              <FaWater size={20} color="#d25212" />
+              <p className="text-[18px] font-bold">
+                Water Conservation Program
+              </p>
             </div>
             <div className="flex gap-4 border-b items-center pb-5 border-gray-300 my-3">
-              <BsThunderbolt size={20} color="#d25212"/>
+              <BsThunderbolt size={20} color="#d25212" />
               <p className="text-[18px] font-bold">Renewable Energy Powered</p>
             </div>
             <div className="flex items-center gap-4 pb-5 my-3">
-              <PiVan size={20} color="#d25212"/>
+              <PiVan size={20} color="#d25212" />
               <p className="text-[18px] font-bold">Local Sourcing Priority</p>
             </div>
           </div>
-         
         </div>
       </section>
 
-      <section id="gallery" className="bg-[#F8EFEB] pt-14 pb-5 px-4 md:px-6  lg:px-20">
+      <section
+        id="gallery"
+        className="bg-[#F8EFEB] pt-14 pb-5 px-4 md:px-6  lg:px-20"
+      >
         <h1
           style={{ fontFamily: "Plus Jakarta" }}
           className="text-4xl font-bold text-center mb-3"
@@ -1132,9 +1272,10 @@ function Home() {
           Gallery
         </h1>
         <p className="text-center text-gray-600 mb-10">
-        Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit
+          Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
+          consectetur velit
         </p>
-    
+
         {/* CATEGORY NAV */}
         <nav className="lg:flex lg:justify-center grid-cols-3 md:grid md:grid-cols-5 md:gap-4 gap-20 p-4 md:p-2 mb-12">
           {categories2.map((dog) => (
@@ -1155,18 +1296,20 @@ function Home() {
             </button>
           ))}
         </nav>
-    
+
         {/* FOOD CARDS */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 md:grid-cols-1 gap-8">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-8">
           {displayedFood2.map((item) => (
             <div
-              key={`${item.category}-${item.id}`} // use category + id
-              className="bg-white shadow-lg h-[350px] rounded-2xl overflow-hidden relative hover:scale-103 duration-200 cursor-pointer"
+              key={`${item.category}-${item.id}`}
+              className={`mb-8 break-inside-avoid bg-white shadow-lg rounded-2xl overflow-hidden relative hover:scale-103 duration-200 cursor-pointer ${
+                item.height ?? "h-[310px]"
+              }`}
             >
               <img
                 src={item.img}
                 alt={item.name}
-                className=" w-full h-50 object-cover mb-4"
+                className=" w-full h-[200px] object-cover mb-4"
               />
               <div className="flex flex-col p-5 lg:p-3 gap-2">
                 <h2 className="font-bold text-xl mb-1">{item.name}</h2>
@@ -1177,43 +1320,137 @@ function Home() {
         </div>
       </section>
 
-      <section>
-      <h1
+      <section
+        id="contact"
+        className="bg-[#dfbeb0] pt-14 pb-5 px-4 md:px-6  lg:px-20"
+      >
+        <h1
           style={{ fontFamily: "Plus Jakarta" }}
           className="text-4xl font-bold text-center mb-3"
         >
           Contact
         </h1>
         <p className="text-center text-gray-600 mb-10">
-        Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit
+          Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
+          consectetur velit
         </p>
-        <div className="flex">
-          <div className="flex item-center ">
-            <MdOutlineLocationOn />
+        <div className="flex flex-col md:flex-col lg:flex-row gap-6 w-full justify-between">
+          <div className="flex items-center gap-4 bg-white px-5 py-10 w-full rounded-2xl">
+            <MdOutlineLocationOn
+              size={40}
+              color="#E07844"
+              className="px-2 rounded-4xl bg-[#e58e635a]"
+            />
             <div>
               <h1 className="font-bold text-2xl">Our Address</h1>
-              <p className="text-[18px] text-gray-700">1842 Maple Avenue, Portland, Oregon 97204</p>
+              <p className="text-[18px] text-gray-700">
+                1842 Maple Avenue, Portland, Oregon 97204
+              </p>
             </div>
           </div>
-          <div className="flex item-center ">
-            <CgMail />
+          <div className="flex items-center gap-4 bg-white px-5 py-10 w-full rounded-2xl">
+            <TfiEmail
+              size={40}
+              color="#E07844"
+              className="px-2 rounded-2xl bg-[#e58e635a]"
+            />
             <div>
               <h1 className="font-bold text-2xl">Email Address</h1>
-              <p className="text-[18px] text-gray-700">info@example.comcontact@example.com</p>
+              <p className="text-[18px] text-gray-700">
+                info@example.comcontact@example.com
+              </p>
             </div>
           </div>
-          <div className="flex item-center ">
-            <MdOutlineLocationOn />
-            <div>
-              <h1 className="font-bold text-2xl">Our Address</h1>
-              <p className="text-[18px] text-gray-700">1842 Maple Avenue, Portland, Oregon 97204</p>
+          <div className="flex items-center gap-4 bg-white px-5 py-5 w-full rounded-2xl">
+            <TfiHeadphone
+              size={40}
+              color="#E07844"
+              className="px-3 rounded-2xl bg-[#e58e635a]"
+            />
+            <div className="flex flex-col gap-4">
+              <h1 className="font-bold text-2xl">Hours of Operation</h1>
+              <div>
+                <p className="text-[18px] text-gray-700">
+                  Sunday-Fri: 9 AM - 6 PM
+                </p>
+                <p className="text-[18px] text-gray-700">
+                  Sunday-Fri: 9 AM - 6 PM
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        
-    
       </section>
 
+      <section className="relative h-[140vh] bg-[#F8EFEB]">
+        <BuggyHubMap className={"h-full md:h-[300px] lg:h-[80vh] w-full"} />
+        <form
+          action=""
+          className="py-5 px-4 bg-white rounded-2xl w-[60vw] mx-auto grid grid-cols-2 gap-4 border border-gray-400 absolute top-50 start-68"
+        >
+          <h1
+            className="text-4xl font-bold text-center mb-1 grid col-span-2"
+            style={{ fontFamily: "Plus Jakarta" }}
+          >
+            Get in Touch
+          </h1>
+          <div className="w-24 h-[3px] bg-[#e58e63ee] mx-auto rounded-full grid col-span-2"></div>
+          <div className="relative mt-6">
+            <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+
+            <input
+              type="text"
+              placeholder="First Name"
+              className="border border-gray-700 rounded-xl p-3 pl-12 w-full outline-[#e58e63f6]"
+            />
+          </div>
+          <div className="relative mt-6">
+            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+
+            <input
+              type="email"
+              placeholder="Email Address"
+              className="border border-gray-700 rounded-xl p-3 pl-12 w-full outline-[#e58e63f6]"
+            />
+          </div>
+          <div className="relative mt-6 col-span-2">
+            <AlignLeft className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+
+            <input
+              type="text"
+              placeholder="Subject"
+              className="border border-gray-700 rounded-xl p-3 grid pl-12 w-full outline-[#e58e63f6]"
+            />
+          </div>
+          <div className="relative mt-6 col-span-2">
+            <MessageSquare className="absolute left-4 top-4 text-gray-400 w-5 h-5" />
+
+            <textarea
+              placeholder="Write message..."
+              rows={5}
+              className="border border-gray-700 rounded-xl p-3 pl-12 w-full resize-none outline-[#e58e63f6]"
+            ></textarea>
+          </div>
+          <button className="bg-[#c05c2a] py-3 px-9 rounded-xl font-semibold text-white mx-auto col-span-2">SEND MESSAGE</button>
+        </form>
+      </section>
+
+      <footer className="bg-black lg:h-auto py-10 px-4 md:px-6 lg:px-20">
+        <div className="flex justify-between text-white">
+          <div className="flex flex-col gap-4 ">
+            <p className="text-4xl font-bold" style={{ fontFamily: "Plus Jakarta" }}>Platia</p>
+            <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Donec velit neque auctor sit amet aliquam vel ullamcorper sit amet ligula.</p>
+            <p className="text-2xl font-bold"  style={{ fontFamily: "Plus Jakarta" }}>Stay Updated</p>
+            <div>
+              <input type="text" placeholder="Enter your Email" className="rounded-3xl p-3 bg-gray-800 outline-0 shadow-white shadow-sm "/>
+              <button className=" "><IoPaperPlane size={30} className/></button>
+            </div>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </footer>
     </div>
   );
 }
